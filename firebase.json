@@ -1,0 +1,11 @@
+{
+  "hosting": {
+    "public": "dist/BookMySpacePwa",
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}

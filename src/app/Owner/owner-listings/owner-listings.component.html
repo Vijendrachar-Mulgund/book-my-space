@@ -1,0 +1,21 @@
+<h2 class="display-5">Manage your WareHouse Listings </h2><br />
+<p>
+    <button class="btn btn-primary" routerLink="/owner/products/new"><i class="fas fa-plus"></i> Add New
+        WareHouse</button><br />
+</p><br />
+
+<table class="table table-borderless table-hover">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Edit?</th>
+        </tr>
+    </thead>
+
+    <tbody *ngFor="let list of allLists$ | async">
+        <tr *ngIf="list.dataAll.theOwnerId === ownerId">
+            <td>{{ list.dataAll.wareHouseName }}</td>
+            <td><a [routerLink]="['/owner/products/', list.idAll]">Edit...</a></td>
+        </tr>
+    </tbody>
+</table>

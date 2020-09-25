@@ -1,0 +1,32 @@
+.navbar{
+    margin-bottom: 30px;
+    background-color: #e3f2fd;
+    color: black;
+}
+
+li{
+    cursor: pointer;
+    font-weight: 500;
+    color:black;
+}
+
+
+.logout{
+    color: red;
+    font-weight: bold;
+}
+
+.navbar-brand{
+    font-weight: bold;
+    font-size: 2em;
+}
+
+.profilePhoto{
+    height: 25px;
+    width: 25px;
+    border-radius: 100%;
+}
+
+.btn {
+    color: black;
+}

@@ -1,0 +1,33 @@
+.btn{
+  font-size: 1.5em;
+}
+
+.size{
+  height: 220px;
+}
+
+.card-footer{
+  padding: 0em;
+}
+
+.center{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.card{
+    width: 24em; 
+    height: auto;
+}
+
+.card-title{
+    font-weight: 600;
+}
+
+.bold{
+  font-weight: 600;
+}
+
+.margin{
+  margin-top: 12px;
+}

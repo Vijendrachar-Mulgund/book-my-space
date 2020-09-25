@@ -1,0 +1,13 @@
+.indent { 
+    text-indent: 70px; 
+} 
+
+.bold{
+    margin-top: 30px;
+    font-weight: 700;
+    font-size: 1.3em;
+}
+
+.center{
+    text-align: center;
+}

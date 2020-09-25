@@ -1,0 +1,105 @@
+<section class="container mb-4">
+
+    <!--Section heading-->
+    <h2 class="h1-responsive font-weight-bold text-center my-4"> Contact Us </h2>
+    <!--Section description-->
+    <p class="text-center w-responsive mx-auto mb-5">Do you have any questions? Please do not hesitate to contact us
+        directly. Our team will come back to you within
+        a matter of hours to help you.</p>
+
+    <div class="row">
+
+        <!--Grid column-->
+        <div class="col-md-9 mb-md-0 mb-5">
+            <form #contact="ngForm" (ngSubmit)="sendContent(contact.value)">
+
+                <!--Grid row-->
+                <div class="row">
+
+                    <!--Grid column-->
+                    <div class="col-md-6">
+                        <label for="yourName">Your name</label>
+                        <input #yourName="ngModel" ngModel name="yourName" type="text" id="yourName"
+                            class="form-control" placeholder="Name..." required>
+                        <div class="alert alert-danger" *ngIf="yourName.touched && yourName.invalid">
+                            Please Enter your Full Name.
+                        </div>
+                    </div>
+                    <!--Grid column-->
+
+                    <!--Grid column-->
+                    <div class="col-md-6">
+                        <label for="yourEmail">Your email</label>
+                        <input #yourEmail="ngModel" ngModel name="yourEmail" type="text" id="yourEmail"
+                            class="form-control" placeholder="E-mail..." required email>
+                        <div class="alert alert-danger" *ngIf="yourEmail.touched && yourEmail.invalid">
+                            <div *ngIf="yourEmail.errors.required"> Please Enter your E-mail address</div>
+                            <div *ngIf="yourEmail.errors.email"> Please Enter a valid E-mail address</div>
+                        </div>
+                    </div>
+                    <!--Grid column-->
+
+                </div>
+                <!--Grid row-->
+                <br />
+                <!--Grid row-->
+                <div class="row">
+                    <div class="col-md-12">
+                        <label for="subjectOfMsg">Subject</label>
+                        <input #subjectOfMsg="ngModel" ngModel name="subjectOfMsg" type="text" id="subjectOfMsg"
+                            class="form-control" placeholder="Subject..." required>
+                        <div class="alert alert-danger" *ngIf="subjectOfMsg.touched && subjectOfMsg.invalid">
+                            Please mention the Subject.
+                        </div>
+                    </div>
+                </div>
+                <!--Grid row-->
+                <br />
+                <!--Grid row-->
+                <div class="row">
+
+                    <!--Grid column-->
+                    <div class="col-md-12">
+
+                        <div class="md-form">
+                            <label for="message">Your message</label>
+                            <textarea #message="ngModel" ngModel name="message" type="text" id="message" rows="3"
+                                class="form-control" placeholder="Write Something..." required></textarea>
+                            <div class="alert alert-danger" *ngIf="message.touched && message.invalid">
+                                Please write the message.
+                            </div>
+                        </div>
+
+                    </div>
+                </div><br />
+                <!--Grid row-->
+                <div class="text-center">
+                    <button class="btn btn-primary btn-lg" [disabled]="contact.form.invalid">Send <i
+                            class="far fa-paper-plane"></i></button>
+                </div>
+            </form>
+
+
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-md-3 text-center">
+            <ul class="list-unstyled mb-0">
+                <li><i class="fas fa-map-marker-alt fa-2x"></i>
+                    <p>Banglore, India</p>
+                </li>
+
+                <li><i class="fas fa-phone mt-4 fa-2x"></i>
+                    <p>+91 999-888-9900</p>
+                </li>
+
+                <li><i class="fas fa-envelope mt-4 fa-2x"></i>
+                    <p>contact@bookmyspace.com</p>
+                </li>
+            </ul>
+        </div>
+        <!--Grid column-->
+
+    </div>
+</section>

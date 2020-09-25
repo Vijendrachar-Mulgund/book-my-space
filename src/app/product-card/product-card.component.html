@@ -1,0 +1,34 @@
+<div class="card center">
+    <img class="card-img-top size" [src]="list.dataAll.imageUrl" alt="Card image cap" *ngIf="list.dataAll.imageUrl">
+    <div class="card-body">
+        <h5 class="card-title">{{ list.dataAll.wareHouseName }}.</h5>
+        <p class="card-text"><span class="bold">Address:</span> {{ list.dataAll.warehouseAddress }}.</p>
+        <p class="card-text"><span class="bold">Type:</span> {{ list.dataAll.category | uppercase }} type.</p>
+        <p class="card-text"><span class="bold">Rent:</span> {{ list.dataAll.rentPerday | currency:'INR':'symbol' }} /
+            Day.
+        </p>
+    </div>
+    <div class="card-footer">
+        <button *ngIf="!getQuantity(); else updateQuantity" (click)="addToBook()" class="btn btn-primary btn-block">Book
+            Now</button>
+        <ng-template #updateQuantity>
+            <div class="row no-gutters">
+                <div class="col-3">
+                    <button class="btn btn-danger btn-block" (click)="removeFromBook()">-</button>
+                </div>
+                <div class="col text-center margin">
+                    {{ getQuantity() }} Slot in List
+                </div>
+                <div class="col-3">
+                    <button class="btn btn-success btn-block" (click)="addToBook()">+</button>
+                </div>
+            </div>
+        </ng-template>
+    </div>
+    <div class="card-footer">
+        <div *ngIf="getQuantity(); then listcontent" class="btn btn-primary btn-block"></div>
+        <ng-template #listcontent>
+            <button class="btn btn-primary btn-block" routerLink="/booking-cart">Go to Checkout list</button>
+        </ng-template>
+    </div>
+</div><br />

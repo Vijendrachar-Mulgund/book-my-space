@@ -1,0 +1,154 @@
+<div class="container">
+    <div class="row">
+        <div class="col-6-sm-12">
+            <form #reqForm="ngForm" (ngSubmit)="sendReq(reqForm.value)">
+
+                <h3 class="display -3">Personal Information</h3><br />
+
+                <div class="form-group">
+                    <label for="fullname">Full Name</label>
+                    <input #fullName="ngModel" ngModel name="fullName" id="fullName" type="text" class="form-control"
+                        placeholder="Enter Name..." required>
+                    <div class="alert alert-danger" *ngIf="fullName.touched && fullName.invalid">
+                        Name is Required.
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Enter E-mail Address</label>
+                    <input #email="ngModel" ngModel name="email" id="email" type="email" class="form-control"
+                        placeholder="Enter E-mail Address..." required ngvemail>
+                    <div class="alert alert-danger" *ngIf="email.touched && email.invalid">
+                        <div *ngIf="email.errors.required">E-mail Id is Required.</div>
+                        <div *ngIf="email.errors.email">E-mail Id is invalid.</div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="phNumber">Enter your Phone Number</label>
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">+91</div>
+                        </div>
+                        <input #phNumber="ngModel" ngModel name="phNumber" id="phNumber" type="email"
+                            class="form-control" placeholder="Enter Phone Number..." required maxlength="10"
+                            minlength="10">
+                    </div>
+                    <div class="alert alert-danger" *ngIf="phNumber.touched && phNumber.invalid">
+
+                        <div *ngIf="phNumber.errors.required">Phone Number is Required.</div>
+                        <div *ngIf="phNumber.errors.minlength">Phone Number should contain 10 digits.</div>
+                        <div *ngIf="phNumber.errors.maxlength">Phone Number should contain 10 digits.</div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="resAddress">Enter your Residential Address</label>
+                    <textarea #resAddress="ngModel" ngModel name="resAddress" rows="5" id="resAddress"
+                        class="form-control" placeholder="Enter Residential Address..." required></textarea>
+                    <div class="alert alert-danger" *ngIf="resAddress.touched && resAddress.invalid">
+                        Residential Address is Required.
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="ownerType">Are you a Warehouse Owner or an Agent?</label>
+                    <select #ownerType="ngModel" ngModel name="ownerType" id="ownerType" class="form-control" required>
+                        <option value="">Select...</option>
+                        <option value="agent">Agent</option>
+                        <option value="owner">Owner</option>
+                    </select>
+                    <div class="alert alert-danger" *ngIf="ownerType.touched && ownerType.invalid">
+                        Type selection is Required.
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="adhaarCardNo">Enter your Adhaar Card Number (For Verification)</label>
+                    <input #adhaarCardNo="ngModel" ngModel name="adhaarCardNo" id="adhaarCardNo" type="number"
+                        maxlength="12" minlength="12" class="form-control" pattern="^([0-9]){12}$"
+                        placeholder="Enter Adhaar Card Information..." required maxlength="12" minlength="12">
+                    <div class="alert alert-danger" *ngIf="adhaarCardNo.touched && adhaarCardNo.invalid">
+                        <div *ngIf="adhaarCardNo.errors.required"> Adhaar Card Number is Required for Verification.
+                        </div>
+                        <div *ngIf="adhaarCardNo.errors.pattern"> Pattern does not match</div>
+                    </div>
+                </div><br />
+
+                <h3 class="display -3">Warehouse Information</h3><br />
+
+                <div class="form-group">
+                    <label for="wareHouseName">Enter Warehouse Name</label>
+                    <input #wareHouseName="ngModel" ngModel name="wareHouseName" id="wareHouseName" type="text"
+                        class="form-control" placeholder="Enter Warehouse Name..." required>
+                    <div class="alert alert-danger" *ngIf="wareHouseName.touched && wareHouseName.invalid">
+                        WareHouse Name is Required.
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="WarehouseAddress">Enter your Warehouse Address</label>
+                    <textarea #WarehouseAddress="ngModel" ngModel name="WarehouseAddress" rows="5" id="WarehouseAddress"
+                        class="form-control" placeholder="Enter Warehouse Address..." required></textarea>
+                    <div class="alert alert-danger" *ngIf="WarehouseAddress.touched && WarehouseAddress.invalid">
+                        The Warehouse Address is Required.
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="wareHouseType">Type of Warehouse</label>
+                    <select #wareHouseType="ngModel" ngModel name="wareHouseType" id="wareHouseType"
+                        class="form-control" required>
+                        <option value="">Select...</option>
+                        <option value="privateSpace">Private Space</option>
+                        <option value="godown">GoDown</option>
+                        <option value="shed">Shed</option>
+                        <option value="vault">Vault</option>
+                    </select>
+                    <div class="alert alert-danger" *ngIf="wareHouseType.touched && wareHouseType.invalid">
+                        Please Select the Type.
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="rentPerday">Enter your quotation for Rent (PerDay) </label>
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">&#8377;</div>
+                        </div>
+                        <input #rentPerday="ngModel" ngModel name="rentPerday" id="rentPerday" type="number"
+                            class="form-control" placeholder="Enter Rent..." required [min]=0>
+                    </div>
+                    <div class="alert alert-danger" *ngIf="rentPerday.touched && rentPerday.invalid">
+                        <div *ngIf="rentPerday.errors.required"> Please Mention the Amount.</div>
+                        <div *ngIf="rentPerday.errors.min"> Please Enter a valid Amount.</div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="facilities">Let us know about the Facilities availabe at your Warehouse</label>
+                    <textarea #facilities="ngModel" ngModel name="facilities" rows="5" id="facilities"
+                        class="form-control" placeholder="Enter Facilities..." required></textarea>
+                    <div class="alert alert-danger" *ngIf="facilities.touched && facilities.invalid">
+                        Please Mention the Facilities.
+                    </div>
+                </div>
+
+                <div class="form-check">
+                    <input #agreeToTandC="ngModel" ngModel name="agreeToTandC" type="checkbox" class="form-check-input"
+                        id="agreeToTandC" required>
+                    <label class="form-check-label" for="agreeToTandC">Agree to<a routerLink="/termsandconditions">
+                            Terms and Conditions.</a></label>
+                    <div class="alert alert-danger" *ngIf="agreeToTandC.touched && agreeToTandC.invalid">
+                        You cannot proceed without agreeing to T&C.
+                    </div>
+                </div><br />
+
+                <p class="text-justify">*All the fields are required.</p>
+
+                <button class="btn btn-primary" [disabled]="reqForm.invalid">Submit Request</button>
+
+            </form>
+        </div>
+    </div>
+</div>

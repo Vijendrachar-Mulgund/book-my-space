@@ -1,0 +1,124 @@
+<div class="row">
+    <div class="col-md-6">
+        <form #f="ngForm" (ngSubmit)="save(f.value)">
+            <div class="form-group">
+                <label for="wareHouseName">*Name of the Warehouse:</label>
+                <input #wareHouseName="ngModel" [(ngModel)]="listItem.wareHouseName" name="wareHouseName"
+                    id="wareHouseName" type="text" class="form-control" placeholder="Ware House Name?" required>
+                <div class="alert alert-danger" *ngIf="wareHouseName.touched && wareHouseName.invalid">
+                    Please enter a valid Name.
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="addressOfWareHouse">*Address of the Warehouse:</label>
+                <textarea #warehouseAddress="ngModel" [(ngModel)]="listItem.warehouseAddress" name="warehouseAddress"
+                    class="form-control" rows="5" id="addressOfWareHouse" placeholder="Address..." required></textarea>
+                <div class="alert alert-danger" *ngIf="warehouseAddress.touched && warehouseAddress.invalid">
+                    Please enter a valid Address.
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="rentPerDay">*Rent Amount/Day:</label>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">&#8377;</span>
+                    </div>
+                    <input #rentPerday="ngModel" [(ngModel)]="listItem.rentPerday" name="rentPerday" type="text"
+                        class="form-control" id="rentPerDay" placeholder="Quote your price..." [min]="0" required>
+                </div>
+                <div class="alert alert-danger" *ngIf="rentPerday.touched && rentPerday.invalid">
+                    <div *ngIf="rentPerday.errors.required"> Please enter the Rent Amount.</div>
+                    <div *ngIf="rentPerday.errors.min"> The Rent amount can not be a Negetive number.</div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="category">*Select the type of Warehouse:</label>
+                <select #category="ngModel" [(ngModel)]="listItem.category" name="category" id="category"
+                    class="form-control" required>
+                    <option value="">Select...</option>
+                    <option *ngFor="let cats of categories$ | async" [value]=cats.id>
+                        {{ cats.data.name }}
+                    </option>
+                </select>
+                <div class="alert alert-danger" *ngIf="category.touched && category.invalid">
+                    Please select a Category.
+                </div>
+            </div>
+
+            <form>
+                <div class="form-group">
+                    <label for="exampleFormControlFile1">Input Image File</label>
+                    <input type="file" class="form-control-file" type="file" (change)="fileUpload($event)"
+                        id="exampleFormControlFile1">
+                </div>
+            </form>
+
+            <div class="form-group">
+                <label for="imageUrl">*The Image Url:</label>
+                <input [value]="imageUrl" [(ngModel)]="imageUrl" name="imageUrl" id="imageUrl" type="text"
+                    class="form-control" placeholder="The Image URL..." readonly>
+                <!-- <div class="alert alert-danger" *ngIf="imageUrl.touched && imageUrl.invalid">
+                    <div *ngIf="imageUrl.errors.required">Please enter the Url for the Image.</div>
+                </div> -->
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <label for="totalNo">*Total Number of Storage Spaces:</label>
+                    <input #totalNo="ngModel" [(ngModel)]="listItem.totalNo" name="totalNo" id="totalNo" type="text"
+                        class="form-control" placeholder="Total No. of Spaces..." required>
+                    <div class="alert alert-danger" *ngIf="totalNo.touched && totalNo.invalid">
+                        <div *ngIf="totalNo.errors.required">Please enter the Total number of Storage areas available.
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <label for="currentNo">*Storage Spaces available currently:</label>
+                    <input #currentNo="ngModel" [(ngModel)]="listItem.currentNo" name="currentNo" id="currentNo"
+                        type="text" class="form-control" placeholder="Currently Available..." required>
+                    <div class="alert alert-danger" *ngIf="currentNo.touched && currentNo.invalid">
+                        Please enter the number of Storage areas currently available.
+                    </div>
+                </div>
+            </div><br />
+
+            <div class="form-group">
+                <label for="currentNo">*Your User ID (Prefetched):</label>
+                <input [(ngModel)]="theOwnerId" name="theOwnerId" class="form-control" id="theOwnerId" type="text"
+                    [value]="theOwnerId" required readonly><br />
+            </div>
+
+            <div class="form-check">
+                <input #agreeToTandC="ngModel" ngModel name="agreeToTandC" type="checkbox" class="form-check-input"
+                    id="agreeToTandC" required>
+                <label class="form-check-label" for="agreeToTandC">Agree to<a routerLink="/termsandconditions">
+                        Terms and Conditions.</a></label>
+                <div class="alert alert-danger" *ngIf="agreeToTandC.touched && agreeToTandC.invalid">
+                    You cannot proceed without agreeing to T&C.
+                </div>
+            </div><br />
+            <p>* Marked fields are Required.</p>
+
+
+            <button class="btn btn-primary" [disabled]="f.invalid"><i class="fas fa-save"></i> Save</button>
+            <button type="button" (click)="deleteItem()" class="btn btn-danger"><i class="fas fa-trash-alt"></i>
+                Delete</button>
+
+        </form>
+    </div>
+    <div *ngIf="listItem.wareHouseName" class="col-md-6">
+        <h1 class="display-5">Preview</h1>
+        <div class="card" style="width: 22rem;">
+            <img class="card-img-top" [src]="listItem.imageUrl">
+            <div class="card-body">
+                <h5 class="card-title" style="font-weight: bold;">{{listItem.wareHouseName}}</h5>
+                <p class="card-text"> {{listItem.warehouseAddress}}</p>
+                <p class="card-text">{{listItem.category | uppercase}} Type</p>
+                <h5 class="card-text"> {{listItem.rentPerday | currency:'INR':'symbol'}} /Day</h5>
+            </div>
+        </div>
+    </div>
+</div>

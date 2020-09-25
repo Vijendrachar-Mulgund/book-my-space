@@ -1,0 +1,28 @@
+<h1 class="display-3">Booking List</h1>
+<h3 class="display-5">Please Verify the Booking details</h3><br />
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Space count</th>
+            <th scope="col">Rent Per Day</th>
+        </tr>
+    </thead>
+    <tbody *ngFor="let data of bookingData">
+        <tr>
+            <td>{{ data.data.product.dataAll.wareHouseName }}</td>
+            <td>{{ data.data.nos }}</td>
+            <td>{{(data.data.product.dataAll.rentPerday * data.data.nos) | currency:'INR'}}</td>
+        </tr>
+    </tbody>
+
+    <tfoot>
+        <th>Total Rent</th>
+        <td></td>
+        <th>{{ calcPrice() | currency:'INR'  }}</th>
+    </tfoot>
+</table>
+
+<button class="btn btn-danger" (click)="clearCart()"> <i class="fas fa-trash"></i> Clear the List</button>
+<button class="btn btn-primary" (click)="placeOrder()"> Check Out <i class="fas fa-arrow-circle-right"></i> </button>

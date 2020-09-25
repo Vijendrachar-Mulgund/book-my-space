@@ -1,0 +1,35 @@
+.center{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.myStyle{
+    background-color: chocolate;
+    border: chocolate;
+    font-size: 1.5em;
+}
+
+.display-3{
+    font-weight: bold;
+}
+
+.linkToRegister{
+    margin-top: 40px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 1.5em;
+}
+
+.bold{
+    font-weight: 600;
+}
+
+.width{
+    width: 27em;
+}
+
+@media only screen and (max-width: 600px){
+    .width{
+        width: 24em;
+    }
+}

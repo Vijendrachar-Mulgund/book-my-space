@@ -1,0 +1,244 @@
+<div class="jumbotron jumbotron-fluid">
+    <div class="container-fluid">
+        <h1 class="display-4">News</h1>
+        <p class="lead">Powered by <a target="_blank" href="https://open-platform.theguardian.com/"> The Gaurdian</a>
+        </p>
+    </div>
+</div>
+
+<div *ngIf="theArticles; then show else loading"></div>
+
+<ng-template #show>
+    <div class="container" *ngFor="let art of theArticles; let i=index">
+        <div class="row">
+            <div class="col">
+                <div class="card mb-3">
+                    <div class="card-header">
+                        {{ art.sectionName }}
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">{{art.webTitle}}</h5>
+                        <p class="card-text">Published: {{ art.webPublicationDate }}</p>
+                        <a target="_blank" [href]="art.webUrl" class="btn btn-primary fontColor">Read More <i
+                                class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #loading>
+    <div class="center">Loading...</div>
+</ng-template>
+
+
+
+<!-- 
+<div class="container">
+
+    <div class="row row-cols-1 row-cols-md-2">
+        <div class="col mb-4">
+
+            <div class="card">
+
+
+                <div class="view overlay">
+                    <img class="card-img-top" src="https://img.staticmb.com/mbcontent/images/uploads/2019/12/home8.jpg"
+                        alt="Card image cap">
+                    <a href="#!">
+                        <div class="mask rgba-white-slight"></div>
+                    </a>
+                </div>
+
+
+                <div class="card-body">
+
+
+                    <h4 class="card-title">Karnataka collects Rs 253 crore since April 24 as property registration picks
+                        up
+                        pace.</h4>
+
+                    <p class="card-text">Karnataka's retail real estate market is slowly emerging from the Covid-19
+                        slump,
+                        going by the revenue generated from
+                        property transactions in one month of operations during the lockdown.</p>
+
+                    <a type="button"
+                        href="https://content.magicbricks.com/property-news/bangalore-real-estate-news/karnataka-collects-rs-253-crore-since-april-24-as-property-registration-picks-up-pace/113568.html"
+                        class="btn btn-primary">Read more</a>
+
+                </div>
+
+            </div>
+
+        </div>
+        <div class="col mb-4">
+
+            <div class="card">
+
+
+                <div class="view overlay">
+                    <img class="card-img-top"
+                        src="https://www.corelogic.com.au/sites/default/files/2020-05/1200x800px_sunshinecoastmotorway_0.jpg"
+                        alt="Card image cap">
+                    <a href="#!">
+                        <div class="mask rgba-white-slight"></div>
+                    </a>
+                </div>
+
+
+                <div class="card-body">
+
+
+                    <h4 class="card-title">The Property Market In 2020: What Lies Ahead?</h4>
+
+                    <p class="card-text">CoreLogic has released its March Quarter Property Market & Economic Review,
+                        Eliza
+                        Owen Head of Research Australia
+                        provides insights around the state of housing before the onset of COVID-19 as well as an
+                        assessment
+                        of what is ahead.</p>
+
+                    <a type="button" href="https://www.corelogic.com.au/news/property-market-2020-what-lies-ahead"
+                        class=" btn btn-primary">Read more</a>
+
+                </div>
+
+            </div>
+
+        </div>
+        <div class="col mb-4">
+
+            <div class="card">
+
+
+                <div class="view overlay">
+                    <img class="card-img-top"
+                        src="https://img.etimg.com/thumb/msid-75913063,width-300,imgsize-31789,resizemode-4/consider-infusing-rs-500-crore-in-amrapali-projects-sc-to-government.jpg"
+                        alt="Card image cap">
+                    <a href="#!">
+                        <div class="mask rgba-white-slight"></div>
+                    </a>
+                </div>
+
+
+                <div class="card-body">
+
+
+                    <h4 class="card-title">Consider infusing Rs 500 crore in Amrapali projects: SC to government</h4>
+
+                    <p class="card-text">The receiver urged the top court to direct the home buyers to deposit their
+                        outstanding installments as per the cash
+                        flow mentioned in the project brief within three months from the date of publication on the
+                        receiver's blog/website.
+                    </p>
+                    <a target="_blank" href="https://economictimes.indiatimes.com/wealth/real-estate" type="button"
+                        class="btn btn-primary">Read more</a>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="col mb-4">
+
+            <div class="card">
+
+
+                <div class="view overlay">
+                    <img class="card-img-top"
+                        src="https://c.ndtvimg.com/2019-01/emdodc48_markets-sensex-nifty-reuters_625x300_29_January_19.jpg"
+                        alt="Card image cap">
+                    <a href="#!">
+                        <div class="mask rgba-white-slight"></div>
+                    </a>
+                </div>
+
+
+                <div class="card-body">
+
+
+                    <h4 class="card-title">Sensex, Nifty Off Day's High; Metals; Banks Trade Firm, IT Stocks Weak
+                    </h4>
+
+                    <p class="card-text">Domestic stock markets are firmly in the green mid way through the day, albeit
+                        off
+                        the highs touched in early trades, as
+                        markets resumed trading after the long weekend.</p>
+                    <a target="_blank"
+                        href="https://www.ndtv.com/business/sensex-nifty-off-days-high-metals-banks-trade-firm-it-stocks-weak-amid-covid-19-coronavirus-2235203"
+                        type="button" class="btn btn-primary">Read more</a>
+
+                </div>
+
+            </div>
+
+        </div>
+        <div class="col mb-4">
+
+            <div class="card">
+
+
+                <div class="view overlay">
+                    <img class="card-img-top"
+                        src="https://c.ndtvimg.com/2019-01/emdodc48_markets-sensex-nifty-reuters_625x300_29_January_19.jpg"
+                        alt="Card image cap">
+                    <a href="#!">
+                        <div class="mask rgba-white-slight"></div>
+                    </a>
+                </div>
+
+
+                <div class="card-body">
+
+
+                    <h4 class="card-title">Uber India Lays Off 600 People, A Quarter Of Its Workforce
+                    </h4>
+
+                    <p class="card-text">The company said the impacted positions are in its driver and rider support
+                        operations as well as other functions.</p>
+                    <a target="_blank"
+                        href="https://www.ndtv.com/business/uber-india-layoff-news-uber-india-lays-off-600-employees-amid-coronavirus-covid-19-lockdown-2235143"
+                        type="button" class="btn btn-primary">Read more</a>
+
+                </div>
+
+            </div>
+
+        </div>
+        <div class="col mb-4">
+
+            <div class="card">
+
+
+                <div class="view overlay">
+                    <img class="card-img-top"
+                        src="https://i.ndtvimg.com/i/2015-11/lufthansa-afp_650x400_71446808009.jpg"
+                        alt="Card image cap">
+                    <a href="#!">
+                        <div class="mask rgba-white-slight"></div>
+                    </a>
+                </div>
+
+
+                <div class="card-body">
+
+
+                    <h4 class="card-title">Lufthansa, German Government Agree On $9.8 Billion Rescue Package: Report
+                    </h4>
+
+                    <p class="card-text">The carrier said last week it was in advanced talks on a deal that would
+                        involve
+                        the government taking two seats on its
+                        supervisory board.</p>
+                    <a target="_blank"
+                        href="https://www.ndtv.com/business/lufthansa-german-government-agree-on-9-8-billion-rescue-package-report-2234962"
+                        type="button" class="btn btn-primary">Read more</a>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div> -->

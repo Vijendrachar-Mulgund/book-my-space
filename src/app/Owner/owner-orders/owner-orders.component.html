@@ -1,0 +1,18 @@
+<h1 class="display-4">Orders Recived</h1><br />
+<h5 class="display-5">Orders made by your customers.</h5><br />
+<div class="container">
+    <div class="card margin" style="width: 100%" *ngFor="let res of result$ | async">
+        <div class="card-header">
+            Order Summary
+        </div>
+        <div class="card-body">
+            <p class="card-text"><span class="bold">Order Id:</span> {{ res.id }}</p>
+            <p class="card-text"><span class="bold">Date of the Order:</span> {{ res.data.datePlaced }}</p><br />
+            <h5 class="diplay-6">Order Details</h5>
+            <div *ngFor="let prod of res.data.theProduct">
+                <p class="card-text">{{ prod.data.nos }} slots of {{ prod.data.product.dataAll.wareHouseName }}</p>
+                <p class="card-text"></p>
+            </div>
+        </div>
+    </div>
+</div>

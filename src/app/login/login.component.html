@@ -1,0 +1,49 @@
+<div *ngIf="auth.user$ | async; then authenticated else guest">
+    <!-- template will replace this div -->
+</div>
+
+<!-- User NOT logged in -->
+<ng-template #guest>
+    <div class="container">
+        <div class="center">
+            <h1 class="display-3">Hello.</h1>
+            <h1 class="display-5">Welcome to BookMySpace.</h1><br />
+
+            <button class="btn btn-primary myStyle" (click)="auth.googleSignin()">
+                <i class="fab fa-google-plus-g"></i> LogIn with Google
+            </button>
+        </div>
+    </div>
+</ng-template>
+
+
+<!-- User logged in -->
+<ng-template #authenticated>
+    <div *ngIf="auth.user$ | async as user">
+        <div class="card center width">
+            <div class="view overlay">
+                <img class="card-img-top" src="..." alt="Card image cap" [src]="user.photoURL" alt="Card image cap">
+                <a>
+                    <div class="mask rgba-white-slight"></div>
+                </a>
+            </div>
+
+            <div class="card-body">
+                <h4 class="card-title">{{ user.displayName }}</h4>
+                <p class="card-text"><span class="bold">Registered E-mail:</span> {{user.email}}</p>
+                <p *ngIf="user.isOwner" class="card-text"><span class="bold"> Status:</span> You are a Registered
+                    Warehouse Owner</p>
+                <p *ngIf="!user.isOwner" class="card-text"><span class="bold"> Status:</span> Not Registered.</p>
+                <p class="card-text"><span class="bold">Your User ID:</span> {{user.uid}}</p>
+
+            </div>
+            <button class="btn btn-danger" (click)="auth.signOut()">LogOut</button>
+        </div>
+
+        <div *ngIf="!user.isOwner">
+            <p class="linkToRegister">Are you the Owner of a Warehouse? <a routerLink="/requestForm">Click Here</a> to
+                Register.</p>
+        </div>
+
+    </div>
+</ng-template>

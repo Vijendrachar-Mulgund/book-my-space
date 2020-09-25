@@ -1,0 +1,52 @@
+<nav class="navbar navbar-expand-lg navbar-light">
+
+  <a class="navbar-brand" routerLink="/">BookMySpace</a>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto">
+
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/booking-cart"><i class="fas fa-clipboard-list"></i> Booking List <span
+            class="badge badge-warning">{{ badgecount }}</span></a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/news"><i class="fas fa-rss-square"></i> News</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/about-us"><i class="fas fa-info-circle"></i> About Us</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/contact-us"><i class="fas fa-envelope"></i> Contact Us</a>
+      </li>
+
+      <li *ngIf="!(auth.user$ | async)" class="nav-item">
+        <a class="nav-link" routerLink="/login"> <i class="fas fa-sign-in-alt"></i> LogIn</a>
+      </li>
+
+      <li class="nav-item dropdown" *ngIf="auth.user$ | async as user">
+        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false"><img [src]="user.photoURL" class="profilePhoto">
+          {{user.displayName}}
+        </a>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" routerLink="my/orders">My Orders</a>
+          <a class="dropdown-item" routerLink="/login">My Profile</a>
+          <ng-container *ngIf="user.isOwner">
+            <a class="dropdown-item" routerLink="owner/listings">Owner's Posts</a>
+            <a class="dropdown-item" routerLink="owner/orders">Owner's Order Management</a>
+          </ng-container>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item logout" (click)="logout()">LogOut</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>
