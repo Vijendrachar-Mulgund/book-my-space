@@ -6,7 +6,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 Create a new Project on your Firebase console.
 Create a new Web App.
-Copy the Config data and paste them in the environment.ts and environment.prod.ts Files.
+Copy the Config data and paste them in the `environment.ts` and `environment.prod.ts` Files.
 
 ## The News Api
 
