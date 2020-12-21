@@ -26,7 +26,7 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
 ## Hosting
 
-The API and the server side rendered website can be found on the domain [Book My Space](https://bookmyspacepwa.web.app) .
+The website can be found on the domain [Book My Space](https://bookmyspacepwa.web.app) .
 
 ## Code scaffolding
 
