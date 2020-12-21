@@ -24,6 +24,10 @@ The Dependencies required for the Project are enlisted in 'package.json' file.
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
+## Hosting
+
+The API and the server side rendered website can be found on the domain [Book My Space](https://bookmyspacepwa.web.app) .
+
 ## Code scaffolding
 
 Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
